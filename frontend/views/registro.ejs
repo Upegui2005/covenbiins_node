@@ -5,8 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title text-center mb-4">Registro</h2>
-                <form method="post" action="#">
-                    {% csrf_token %}
+                <form method="post" action="/guardar">
                     <div class="mb-3">
                         <label for="cedula" class="form-label">Cedula</label>
                         <input type="number" class="form-control" id="cedula" placeholder="Digite su cedula" name="cedula">

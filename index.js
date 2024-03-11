@@ -6,7 +6,7 @@ const path = require('path');
 const { start } = require('repl');
 require('dotenv').config();
 
-
+const { connect } =  require('./backend/db/db');
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -21,6 +21,7 @@ app.use('', require('./backend/router'))
 
 async function StartServer() {
     try {
+        await connect();
         app.listen(app.get('port'), () =>{
             console.log('Server activo', app.get('port'));
         })
