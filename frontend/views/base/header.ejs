@@ -47,17 +47,17 @@
                 </div>
 
                 <div class="modal-body">
-                    <form>
+                    <form method="post" action="/login">
                         <div class="input-group">
                             <span class="input-group-text">Correo Electronico:</span>
-                            <input type="email" class="form-control" id="emailInicio">
+                            <input type="email" class="form-control" name="email">
                         </div><br>
                         <div class="input-group">
                             <span class="input-group-text">Contraseña:</span>
-                            <input type="password" class="form-control" id="passwordInicio">
+                            <input type="password" class="form-control" name="password">
                         </div>
                         <div class="modal-footer mt-2">
-                            <a href="javascript: login(`{% url 'covenbiins:login' %}`)" class="btn btn-primary">Ingresar</a>
+                            <button type="submit" class="btn btn-primary">Ingresar</button>
                         </div>
                     </form>
                 </div>

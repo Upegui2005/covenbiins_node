@@ -1,7 +1,7 @@
 const moongose = require('mongoose');
 require('dotenv').config();
 
-const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@covenbiins.nzr3etv.mongodb.net/Covenbiins`
+const uri = `mongodb+srv://emmaupegui2005:uyWfmgNPfZFF08GF@covenbiins.nzr3etv.mongodb.net/Covenbiins`
 
 function connect() {
     moongose.connect(uri)

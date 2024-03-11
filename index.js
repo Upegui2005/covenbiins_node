@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const cookies = require('cookie-parser');
 const app = express();
 const path = require('path');
 const { start } = require('repl');
@@ -11,6 +12,7 @@ const { connect } =  require('./backend/db/db');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cookies());
 
 app.set('port', process.env.PORT || 9191);
 app.set('view engine', 'ejs');

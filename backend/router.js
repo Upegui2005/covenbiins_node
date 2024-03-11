@@ -13,4 +13,6 @@ router.get('/registro', (req, res) =>{
 
 router.post('/guardar', users.crear)
 
+router.post('/login', users.login)
+
 module.exports = router
