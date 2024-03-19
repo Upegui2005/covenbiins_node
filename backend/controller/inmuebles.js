@@ -1,7 +1,6 @@
 const { json } = require('express');
 const inmuebles = require('../db/schemas/inmuebles');
-const inm = {}
-
+const inm = {};
 
 inm.crear = async (req, res) => {
     const inmueble = new inmuebles({
@@ -16,11 +15,21 @@ inm.crear = async (req, res) => {
         habitaciones: req.body.habitaciones,
         banos: req.body.banos,
         estrato: req.body.estrato,
-        imagen: req.body.imagen
+        imagen: req.file.path
     });
     await inmueble.save();
     console.log(inmueble);
     res.json(inm)
+}
+
+inm.catalogo = async (req, res) =>{
+    const inmueble = await inmuebles.find()
+    if(inmueble){
+        res.render('inmuebles/catalogo', {inm: inmueble})
+        //res.json(inmueble)
+    }   
+    else
+        res.json({"mensaje":"error al consultar los inmuebles"})
 }
 
 

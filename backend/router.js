@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const users = require('./controller/usuarios')
-const inm = require('./controller/inmuebles')
+const inm = require('./controller/inmuebles');
+
+const upload = require('./multerConfig');
+
 
 
 router.get('/', (req, res) => {
@@ -20,6 +23,8 @@ router.get('/publicar', (req,res) => {
     res.render('inmuebles/publicar')
 })
 
-router.post('/guardar_inmueble', inm.crear)
+router.post('/guardar_inmueble', upload.single('imagen'), inm.crear)
+
+router.get('/catalogo', inm.catalogo)
 
 module.exports = router
