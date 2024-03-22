@@ -15,11 +15,11 @@ inm.crear = async (req, res) => {
         habitaciones: req.body.habitaciones,
         banos: req.body.banos,
         estrato: req.body.estrato,
-        imagen: req.file.path
+        imagen: req.file.originalname
     });
     await inmueble.save();
     console.log(inmueble);
-    res.json(inm)
+    res.json(inmueble);
 }
 
 inm.catalogo = async (req, res) =>{

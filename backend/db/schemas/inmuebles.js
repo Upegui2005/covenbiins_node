@@ -47,8 +47,8 @@ const inmuebles = new Schema({
         require: true
     },
     imagen:{
-        data: Buffer, 
-        contentType: String
+        type: String,
+        require: true
     },
 })
 
