@@ -15,7 +15,7 @@ inm.crear = async (req, res) => {
         habitaciones: req.body.habitaciones,
         banos: req.body.banos,
         estrato: req.body.estrato,
-        imagen: req.file.originalname
+        imagen: req.file.filename
     });
     await inmueble.save();
     console.log(inmueble);

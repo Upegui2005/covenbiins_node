@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-fluid">
-            <a href="/login" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <img src="../img/logoPrincipal.png" alt="logoPrincipal" width="170px" height="40px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -40,11 +40,11 @@
                             Bienvenido usuario
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'covenbiins:cambiar_clave' ' ' %}">Cambiar Contraseña</a></li>
+                            <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="{% url 'covenbiins:logout' %}">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 </ul>

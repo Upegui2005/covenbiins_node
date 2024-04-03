@@ -4,10 +4,11 @@ const users = require('./controller/usuarios')
 const inm = require('./controller/inmuebles');
 
 const multer  = require('multer');
+const cookieParser = require('cookie-parser');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'static/uploads/'); // Ruta donde se guardarán las imágenes
+        cb(null, 'uploads/'); // Ruta donde se guardarán las imágenes
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname); // Nombre de archivo único
@@ -16,10 +17,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-
-
 router.get('/', (req, res) => {
-    res.render('index')
+    if (req.session.cedula){
+        res.render('home_view')
+    }
+    else{
+        res.render('index')
+    }
 })
 
 router.get('/registro', (req, res) =>{
@@ -30,12 +34,20 @@ router.post('/guardar', users.crear)
 
 router.post('/login', users.login)
 
+router.get('/logout', users.logout)
+
 router.get('/publicar', (req,res) => {
-    res.render('inmuebles/publicar')
+    if (req.session.cedula){
+        res.render('inmuebles/publicar')
+    }
+    else{
+        res.redirect('/')
+    }
 })
 
 router.post('/guardar_inmueble', upload.single('imagen'), inm.crear)
 
 router.get('/catalogo', inm.catalogo)
+
 
 module.exports = router

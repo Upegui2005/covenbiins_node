@@ -27,6 +27,10 @@ const usuarios =  new Schema({
             type: String,
             require: true
         },
+        rol: {
+            type: String,
+            require: true
+        },
         email: {
             type: String,
             require: true,

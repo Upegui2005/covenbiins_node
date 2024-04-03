@@ -10,11 +10,12 @@ users.crear = async (req, res) =>{
         fechaNacimiento: req.body.fechaNacimiento,
         telefono: req.body.telefono,
         direccion: req.body.direccion,
+        rol: req.body.rol,
         email: req.body.email,
         password: req.body.contrasena
-    });
+    }); 
     await usuario.save();
-    res.render('index')
+    res.redirect('/')
 }
 
 users.login = async (req, res) =>{
@@ -24,14 +25,23 @@ users.login = async (req, res) =>{
     });
     console.log(usuario)
     if (!usuario){
-        res.render('index')
+        res.redirect('/')
     }
     else{
-        res.cookie("usuario", usuario, {maxAge: 900000, httpOnly: true});
-        console.log(req.cookie)
-        res.render('home_view')
+        req.session.cedula = usuario._id
+        res.redirect('/')
+        console.log(usuario._id)
     }
     //res.json(usuario);
+}
+
+users.logout = async (req, res) =>{
+    req.session.destroy((err) => {
+        if (err){
+            console.error(err)
+        }
+        res.redirect('/')
+    })
 }
 
 module.exports = users
