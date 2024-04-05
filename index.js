@@ -24,7 +24,7 @@ app.set('port', process.env.PORT || 9191);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './frontend/views'));
 
-app.use(express.static('./frontend/static/'));
+app.use(express.static(path.join(__dirname,'./frontend/static/')));
 app.use(express.static('uploads/'));
 app.use('', require('./backend/router'))
 

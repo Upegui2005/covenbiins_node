@@ -16,7 +16,7 @@ const inmuebles = new Schema({
     },
     precio: {
         type: Number,
-        require: true
+        require: [true, "El precio debe ser registrado"]
     },
     direccion: {
         type: String,

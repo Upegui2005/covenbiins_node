@@ -32,5 +32,16 @@ inm.catalogo = async (req, res) =>{
         res.json({"mensaje":"error al consultar los inmuebles"})
 }
 
+inm.detalle = async (req, res) =>{
+    console.log(req.params._id)
+    const inmueble = await inmuebles.findById({"_id":req.params._id})
+    if(inmueble){
+        console.log(inmueble)
+        res.render('inmuebles/detalle', {inmd: inmueble})
+    }
+    else{
+        res.json({"mensaje":"error al consultar los inmuebles"})
+    }
+}
 
 module.exports = inm;
