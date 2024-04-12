@@ -4,19 +4,19 @@ const {Schema} = mongoose
 const citas = new Schema ({
     fechaCita: {
         type: Date,
-        required: true, 
-        unique: true
+        required: [true, "Debes ingresar una fecha para la cita"],
+        min: Date.now()
     },
-    usuario:[{
+    usuario:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'usuarios'
-    }],
-    asesor:[{
+    },
+    asesor:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'usuarios'
-    }],
-    
-})
+        ref: 'usuarios',
+        required: [true, "Selecciona un asesor"],
+    },
+});
 
 
 module.exports = mongoose.model('citas', citas);

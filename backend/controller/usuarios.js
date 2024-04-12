@@ -4,7 +4,7 @@ const users = {}
 
 users.crear = async (req, res) =>{
     const usuario = new usuarios({
-        _id: req.body.cedula,
+        cedula: req.body.cedula,
         nombre: req.body.nombre,
         apellido: req.body.apellido,
         fechaNacimiento: req.body.fechaNacimiento,
@@ -28,9 +28,9 @@ users.login = async (req, res) =>{
         res.redirect('/')
     }
     else{
-        req.session.cedula = usuario._id
+        req.session.cedula = usuario.cedula
         res.redirect('/')
-        console.log(usuario._id)
+        console.log(usuario.cedula)
     }
     //res.json(usuario);
 }

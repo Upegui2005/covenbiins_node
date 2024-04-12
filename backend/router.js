@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const users = require('./controller/usuarios')
 const inm = require('./controller/inmuebles');
+const citas = require('./controller/citas')
 
 const upload = require('./multer')
 
@@ -37,5 +38,7 @@ router.post('/guardar_inmueble', upload.single('imagen'), inm.crear)
 router.get('/catalogo', inm.catalogo)
 
 router.get('/detalle/:_id', inm.detalle)
+
+router.post('/citas', citas.crear)
 
 module.exports = router

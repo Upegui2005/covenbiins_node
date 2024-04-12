@@ -4,6 +4,7 @@ const cors = require('cors');
 const session = require('express-session');
 const app = express();
 const path = require('path');
+const router = require('./backend/router')
 const { start } = require('repl');
 require('dotenv').config();
 
@@ -26,7 +27,7 @@ app.set('views', path.join(__dirname, './frontend/views'));
 
 app.use(express.static(path.join(__dirname,'./frontend/static/')));
 app.use(express.static('uploads/'));
-app.use('', require('./backend/router'))
+app.use('', router)
 
 async function StartServer() {
     try {
