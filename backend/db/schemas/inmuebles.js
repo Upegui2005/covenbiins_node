@@ -61,7 +61,8 @@ const inmuebles = new Schema({
     },
     usuario:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'usuarios'
+        ref: 'usuarios',
+        required: false
     }
 })
 

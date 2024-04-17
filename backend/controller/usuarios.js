@@ -1,4 +1,5 @@
 const usuarios = require('../db/schemas/usuarios')
+const nodemailer = require('nodemailer')
 const users = {}
 
 
@@ -15,6 +16,35 @@ users.crear = async (req, res) =>{
         password: req.body.contrasena
     }); 
     await usuario.save();
+    try{
+        const correo = nodemailer.createTransport({
+            service: "gmail",
+            auth:{
+                user: "covenbiins.sena@gmail.com",
+                pass: "ygqb frhd njyf oxjx",
+            },
+        });
+        
+        const mailOptions = {
+            from: "covenbiins.sena@gmail.com",
+            to: usuario.email,
+            subject: "Registro Completado",
+            html: `<strong>Bienvenido a Covenbiins</strong><br>
+            <p>Nos complace que te hagas una cuenta con nosotros. Espero que encuentres lo que buscas.</p><br>
+            <p>Tu rol es: <strong>${usuario.rol}</strong></p>`,
+        }
+
+        await correo.sendMail(mailOptions, (err, info) => {
+            if (err) {
+              console.error(err);
+            } else {
+              console.log("Correo enviado "+ info.response);
+            }
+        })    
+    }
+    catch{
+        console.log('Error')
+    }
     res.redirect('/')
 }
 
